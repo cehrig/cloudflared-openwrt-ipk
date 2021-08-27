@@ -2,6 +2,5 @@ Package: cloudflared
 Version: 0.0.1
 Depends: ca-certificates, ca-bundle
 Section: net
-Maintainer: Christian Ehrig <cehrig@cloudflare.com>
 Architecture: ${OPENWRT_ARCH}
 Description:  Cloudflared IPK

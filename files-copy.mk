@@ -2,5 +2,5 @@
 files-copy: $(OUT_DIR)
 	echo $(OUT_DIR)
 	for file in $(FILES_COPY); do \
-		cp $(CURDIR)/$${file} $(OUT_DIR)/$${file}; \
+		envsubst < $(CURDIR)/$${file} > $(OUT_DIR)/$${file}; \
     done
