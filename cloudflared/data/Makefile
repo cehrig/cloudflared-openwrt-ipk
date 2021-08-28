@@ -1,5 +1,4 @@
-SUBDIRS = usr
-FILES_COPY = debian-binary
+SUBDIRS = usr tmp etc
 include $(TOPDIR)/directory-handler.mk
 
 all: $(OUT_DIR) $(SUBDIRS)
