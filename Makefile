@@ -1,3 +1,4 @@
+# build relevant variables
 SHELL = /bin/bash
 ARCH ?= arm64
 OPENWRT_ARCH ?= aarch64_generic
@@ -7,11 +8,17 @@ BUILDDIR ?= $(abspath build)
 TOPDIR = $(PWD)
 SUBDIRS = cloudflared
 
+# cloudflared specific variables
+CLOUDFLARED_LISTEN_ADDRESS ?= 127.0.0.1
+CLOUDFLARED_LISTEN_PORT ?= 5353
+
 # send variables downstream
 export SHELL
 export ARCH
 export OPENWRT_ARCH
 export CLOUDFLARED_VERSION
+export CLOUDFLARED_LISTEN_ADDRESS
+export CLOUDFLARED_LISTEN_PORT
 export OS
 export BUILDDIR
 export TOPDIR
