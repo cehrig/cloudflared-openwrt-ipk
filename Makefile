@@ -1,6 +1,8 @@
 SHELL = /bin/bash
 ARCH ?= arm64
 OPENWRT_ARCH ?= aarch64_generic
+CLOUDFLARED_VERSION ?= 2021.8.6
+OS ?= linux
 BUILDDIR ?= $(abspath build)
 TOPDIR = $(PWD)
 SUBDIRS = cloudflared
@@ -9,6 +11,8 @@ SUBDIRS = cloudflared
 export SHELL
 export ARCH
 export OPENWRT_ARCH
+export CLOUDFLARED_VERSION
+export OS
 export BUILDDIR
 export TOPDIR
 

@@ -2,7 +2,24 @@
 
 Build OpenWrt ipk archive by running
 
-`make all ARCH=arm64 OPENWRT_ARCH=aarch64_generic BUILDDIR=build`
+`make all`
+
+Available environment variables:
+```
+OS (default: linux)
+Used for downloading appropriate cloudflared version
+
+ARCH (default: arm64)
+Used for downloading appropriate cloudflared version
+
+OPENWRT_ARCH (default: aarch64_generic)
+Populated 1:1 to package config file
+
+CLOUDFLARED_VERSION (i.e. 2021.8.6)
+
+BUILDDIR (default: build)
+Where to create the package contents including the ipk archive
+```
 
 This should create a directory tree similar to this:
 ```

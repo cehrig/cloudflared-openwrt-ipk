@@ -7,7 +7,7 @@ $(SUBDIRS):
 	$(MAKE) -C $@ all
 
 $(OUT_DIR)/cloudflared:
-	curl -fL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-$(ARCH) \
+	curl -fL https://github.com/cloudflare/cloudflared/releases/download/$(CLOUDFLARED_VERSION)/cloudflared-$(OS)-$(ARCH) \
 		-o $(OUT_DIR)/cloudflared
 	chmod +x $(OUT_DIR)/cloudflared
 

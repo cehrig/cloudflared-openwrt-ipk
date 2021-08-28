@@ -1,6 +1,9 @@
 Package: cloudflared
-Version: 0.0.1
+Version: ${CLOUDFLARED_VERSION}
 Depends: ca-certificates, ca-bundle
+SourceName: cloudflared
 Section: net
 Architecture: ${OPENWRT_ARCH}
-Description:  Cloudflared IPK
+Installed-Size: 13029023
+Description:  Cloudflare Tunnel
+ Securing DNS traffic via DoH
