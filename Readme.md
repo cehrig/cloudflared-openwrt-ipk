@@ -30,6 +30,12 @@ build
 │   │   ├── postinst
 │   │   └── prerm
 │   ├── data
+│   │   ├── etc
+│   │   │   └── init.d
+│   │   │       └── cloudflared
+│   │   ├── tmp
+│   │   │   └── dnsmasq.d
+│   │   │       └── cloudflared.conf
 │   │   └── usr
 │   │       └── bin
 │   │           └── cloudflared
@@ -37,6 +43,7 @@ build
 ├── cloudflared.ipk
 ├── control.tar.gz
 └── data.tar.gz
+
 ```
 
 # Install using opkg
