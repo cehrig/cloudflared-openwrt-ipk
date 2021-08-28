@@ -6,13 +6,46 @@ START=10
 STOP=15
 
 CLOUDFLARED_BIN="/usr/bin/cloudflared"
+CLOUDFLARED_PROCESS="cloudflared"
+CLOUDFLARED_LISTEN_ADDRESS=${CLOUDFLARED_LISTEN_ADDRESS}
+CLOUDFLARED_LISTEN_PORT=${CLOUDFLARED_LISTEN_PORT}
+
+restart() {
+  stop
+  start
+}
 
 start() {
-        echo start
-        # commands to launch application
+  is_running || (^{CLOUDFLARED_BIN} proxy-dns --address ^{CLOUDFLARED_LISTEN_ADDRESS} --port ^{CLOUDFLARED_LISTEN_PORT} > /dev/null 2>&1 &)
+  is_running || exit 1
+
+  dnsmasq_exists
+  uci add_list dhcp.@dnsmasq[0].server="/#/^{CLOUDFLARED_LISTEN_ADDRESS}#^{CLOUDFLARED_LISTEN_PORT}"
+  dnsmasq_commit_restart
 }
 
 stop() {
-        echo stop
-        # commands to kill application
+  dnsmasq_exists
+  uci del_list dhcp.@dnsmasq[0].server="/#/^{CLOUDFLARED_LISTEN_ADDRESS}#^{CLOUDFLARED_LISTEN_PORT}"
+  dnsmasq_commit_restart
+
+  pgrep ^{CLOUDFLARED_PROCESS} | xargs kill
+}
+
+dnsmasq_exists() {
+  [ -e "/etc/init.d/dnsmasq" ] || exit 1
+}
+
+dnsmasq_commit_restart() {
+  uci commit dhcp
+  /etc/init.d/dnsmasq restart
+}
+
+is_running() {
+  for i in {0..2}
+  do
+    pgrep cloudflared > /dev/null && return 0
+    sleep 1
+  done
+  return 1
 }
