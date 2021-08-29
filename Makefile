@@ -27,7 +27,7 @@ check-env:
 ifeq ("$(ARCH)", "arm64")
 else ifeq ("$(ARCH)", "arm")
 else
-	$(error Architecture must be one of arm64, arm)
+$(error Architecture must be one of arm64, arm)
 endif
 
 all: check-env $(BUILDDIR) $(SUBDIRS) control data ipk

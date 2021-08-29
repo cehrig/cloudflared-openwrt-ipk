@@ -4,4 +4,4 @@ files-copy: $(OUT_DIR)
 	for file in $(FILES_COPY); do \
 		envsubst < $(CURDIR)/$${file} | tr -s '^' '$$' > $(OUT_DIR)/$${file}; \
 		chmod --reference=$(CURDIR)/$${file} $(OUT_DIR)/$${file}; \
-    done
+	done
