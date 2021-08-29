@@ -49,5 +49,6 @@ $(BUILDDIR)/data.tar.gz: $(SUBDIRS)
 
 $(BUILDDIR)/cloudflared.ipk: control data
 	tar -zcvf $@ -C $(BUILDDIR)/cloudflared debian-binary -C $(BUILDDIR) data.tar.gz control.tar.gz
+	rm -r $(BUILDDIR)/cloudflared
 
 .PHONY: check-env all control data ipk $(SUBDIRS)
