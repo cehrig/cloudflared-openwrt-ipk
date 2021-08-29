@@ -54,3 +54,9 @@ build
 Copy cloudflared.ipk to your OpenWrt box and install via
 
 `opkg install cloudflared.ipk`
+
+This will start cloudflared like this
+
+`cloudflared --address 127.0.0.1 --port 5353`
+
+and set the dnsmasq upstream DNS resolver to `127.0.0.1:5353` 
