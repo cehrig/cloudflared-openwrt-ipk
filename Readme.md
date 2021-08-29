@@ -21,6 +21,10 @@ BUILDDIR (default: build)
 Where to create the package contents including the ipk archive
 ```
 
+Running `make all` is identical to 
+
+`make all BUILDDIR=build OS=linux ARCH=arm64 OPENWRT_ARCH=aarch64_generic CLOUDFLARED_VERSION=2021.8.6`
+
 This should create a directory tree similar to this:
 ```
 build
@@ -47,4 +51,6 @@ build
 ```
 
 # Install using opkg
+Copy cloudflared.ipk to your OpenWrt box and install via
+
 `opkg install cloudflared.ipk`
